@@ -1,6 +1,6 @@
-# AuraFi Oracle
+# AuraFun Oracle
 
-The AuraFi Oracle is an off-chain service that computes creator aura scores from Farcaster social metrics and updates the on-chain AuraOracle contract. It acts as a trusted data provider, fetching real-time creator metrics, computing weighted aura scores, and storing verifiable evidence on IPFS.
+The AuraFun Oracle is an off-chain service that computes creator aura scores from Farcaster social metrics and updates the on-chain AuraOracle contract. It acts as a trusted data provider, fetching real-time creator metrics, computing weighted aura scores, and storing verifiable evidence on IPFS.
 
 ## Overview
 

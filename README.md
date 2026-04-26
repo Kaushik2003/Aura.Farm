@@ -45,7 +45,7 @@ The project is currently in a **Beta Testing Phase**.
 
 ## Overview
 
-AuraFi implements a creator economy protocol with the following key features:
+AuraFun implements a creator economy protocol with the following key features:
 
 - **Dual Collateral Model**: Both creator stakes and fan deposits back the token supply, ensuring skin in the game for all participants
 - **Aura-Anchored Economics**: Token peg (CELO-per-token) and supply caps derive from verifiable Farcaster metrics, creating dynamic value tied to creator reputation
