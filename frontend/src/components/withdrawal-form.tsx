@@ -84,7 +84,7 @@ export function WithdrawalForm({ currentBalance, onSuccess }: WithdrawalFormProp
 
     // Handle transaction success
     if (isSuccess && !isSubmitting) {
-        toast.success(`Successfully withdrew ${watchedAmount} CELO`)
+        toast.success(`Successfully withdrew ${watchedAmount} ETH`)
         reset()
         onSuccess?.()
     }
@@ -123,14 +123,14 @@ export function WithdrawalForm({ currentBalance, onSuccess }: WithdrawalFormProp
                 <div>
                     <div className="flex justify-between items-center mb-1">
                         <label htmlFor="amount" className="block text-sm font-medium text-gray-700">
-                            Amount (CELO)
+                            Amount (ETH)
                         </label>
                         <button
                             type="button"
                             onClick={() => setValue('amount', maxAmount)}
                             className="text-xs text-blue-600 hover:text-blue-800"
                         >
-                            Max: {parseFloat(maxAmount).toFixed(4)} CELO
+                            Max: {parseFloat(maxAmount).toFixed(4)} ETH
                         </button>
                     </div>
                     <input
@@ -157,13 +157,13 @@ export function WithdrawalForm({ currentBalance, onSuccess }: WithdrawalFormProp
                 <div className="bg-gray-50 rounded-md p-3">
                     <div className="flex justify-between text-sm">
                         <span className="text-gray-600">Available Balance:</span>
-                        <span className="font-medium">{parseFloat(maxAmount).toFixed(4)} CELO</span>
+                        <span className="font-medium">{parseFloat(maxAmount).toFixed(4)} ETH</span>
                     </div>
                     {watchedAmount && (
                         <div className="flex justify-between text-sm mt-1">
                             <span className="text-gray-600">Remaining After Withdrawal:</span>
                             <span className="font-medium">
-                                {(parseFloat(maxAmount) - parseFloat(watchedAmount || '0')).toFixed(4)} CELO
+                                {(parseFloat(maxAmount) - parseFloat(watchedAmount || '0')).toFixed(4)} ETH
                             </span>
                         </div>
                     )}

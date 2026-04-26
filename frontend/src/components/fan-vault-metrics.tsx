@@ -26,7 +26,7 @@ export function FanVaultMetrics({ vault }: FanVaultMetricsProps) {
     }
 
     // Stage progress calculation
-    const stageRequirements = [0, 0.001, 0.003, 0.008, 0.018] // CELO requirements for each stage
+    const stageRequirements = [0, 0.001, 0.003, 0.008, 0.018] // ETH requirements for each stage
     const currentStageReq = stageRequirements[vault.stage] || 0
     const nextStageReq = vault.stage < 4 ? stageRequirements[vault.stage + 1] : null
     const creatorCollateralCelo = Number(formatEther(vault.creatorCollateral))
@@ -54,7 +54,7 @@ export function FanVaultMetrics({ vault }: FanVaultMetricsProps) {
                     <div className="text-2xl font-bold text-gray-900">
                         {pegInCelo.toFixed(3)}
                     </div>
-                    <div className="text-xs text-gray-500 mt-1">CELO per token</div>
+                    <div className="text-xs text-gray-500 mt-1">ETH per token</div>
                 </div>
 
                 {/* Total Value Locked */}
@@ -63,7 +63,7 @@ export function FanVaultMetrics({ vault }: FanVaultMetricsProps) {
                     <div className="text-2xl font-bold text-gray-900">
                         {formatNumber(tvl, 1)}
                     </div>
-                    <div className="text-xs text-gray-500 mt-1">CELO</div>
+                    <div className="text-xs text-gray-500 mt-1">ETH</div>
                 </div>
 
                 {/* Aura Score */}
@@ -84,15 +84,15 @@ export function FanVaultMetrics({ vault }: FanVaultMetricsProps) {
                     <div className="space-y-3">
                         <div className="flex justify-between items-center">
                             <span className="text-gray-600">Creator Collateral:</span>
-                            <span className="font-semibold">{formatEther(vault.creatorCollateral)} CELO</span>
+                            <span className="font-semibold">{formatEther(vault.creatorCollateral)} ETH</span>
                         </div>
                         <div className="flex justify-between items-center">
                             <span className="text-gray-600">Fan Collateral:</span>
-                            <span className="font-semibold">{formatEther(vault.fanCollateral)} CELO</span>
+                            <span className="font-semibold">{formatEther(vault.fanCollateral)} ETH</span>
                         </div>
                         <div className="flex justify-between items-center border-t pt-2">
                             <span className="text-gray-900 font-medium">Total Collateral:</span>
-                            <span className="font-bold">{formatEther(vault.totalCollateral)} CELO</span>
+                            <span className="font-bold">{formatEther(vault.totalCollateral)} ETH</span>
                         </div>
                     </div>
                 </div>
@@ -162,7 +162,7 @@ export function FanVaultMetrics({ vault }: FanVaultMetricsProps) {
                                 <>
                                     <div className="flex justify-between items-center">
                                         <span className="text-gray-600">Next Stage Requirement:</span>
-                                        <span className="font-semibold">{nextStageReq} CELO</span>
+                                        <span className="font-semibold">{nextStageReq} ETH</span>
                                     </div>
 
                                     {/* Stage Progress Bar */}

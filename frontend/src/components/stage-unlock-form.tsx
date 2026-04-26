@@ -77,7 +77,7 @@ export function StageUnlockForm({ vault, onSuccess }: StageUnlockFormProps) {
         // Validate that current collateral + entered amount >= next stage requirement
         const totalAfterDeposit = currentCollateralCelo + amountNum
         if (totalAfterDeposit < requiredStake) {
-            toast.error(`Insufficient amount to unlock Stage ${nextStage}. Need ${requiredStake} CELO total.`)
+            toast.error(`Insufficient amount to unlock Stage ${nextStage}. Need ${requiredStake} ETH total.`)
             return
         }
 
@@ -123,7 +123,7 @@ export function StageUnlockForm({ vault, onSuccess }: StageUnlockFormProps) {
             <div className="mb-4">
                 <h3 className="text-lg font-semibold text-purple-900">Unlock Next Stage</h3>
                 <p className="text-sm text-gray-600 mt-1">
-                    Deposit additional CELO to unlock Stage {nextStage} and increase mint capacity
+                    Deposit additional ETH to unlock Stage {nextStage} and increase mint capacity
                 </p>
             </div>
 
@@ -139,7 +139,7 @@ export function StageUnlockForm({ vault, onSuccess }: StageUnlockFormProps) {
                     </div>
                     <div className="flex justify-between">
                         <span className="text-purple-700">Your Collateral:</span>
-                        <span className="font-semibold text-purple-900">{currentCollateralCelo.toFixed(2)} CELO</span>
+                        <span className="font-semibold text-purple-900">{currentCollateralCelo.toFixed(2)} ETH</span>
                     </div>
                 </div>
 
@@ -149,7 +149,7 @@ export function StageUnlockForm({ vault, onSuccess }: StageUnlockFormProps) {
                         <div className="border-t border-purple-200 pt-3 mb-3">
                             <div className="flex justify-between text-sm mb-2">
                                 <span className="text-purple-700">Stage {nextStage} Requirements:</span>
-                                <span className="font-semibold text-purple-900">{requiredStake} CELO</span>
+                                <span className="font-semibold text-purple-900">{requiredStake} ETH</span>
                             </div>
                             <div className="flex justify-between text-sm mb-2">
                                 <span className="text-purple-700">New Capacity:</span>
@@ -157,7 +157,7 @@ export function StageUnlockForm({ vault, onSuccess }: StageUnlockFormProps) {
                             </div>
                             <div className="flex justify-between text-sm">
                                 <span className="text-purple-700">Remaining Needed:</span>
-                                <span className="font-semibold text-purple-900">{remainingAmount.toFixed(2)} CELO</span>
+                                <span className="font-semibold text-purple-900">{remainingAmount.toFixed(2)} ETH</span>
                             </div>
                         </div>
 
@@ -181,7 +181,7 @@ export function StageUnlockForm({ vault, onSuccess }: StageUnlockFormProps) {
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                     <label htmlFor="amount" className="block text-sm font-medium text-gray-700 mb-2">
-                        CELO Amount to Deposit
+                        ETH Amount to Deposit
                     </label>
                     <div className="relative">
                         <input
@@ -196,17 +196,17 @@ export function StageUnlockForm({ vault, onSuccess }: StageUnlockFormProps) {
                             disabled={isLoading}
                         />
                         <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                            <span className="text-gray-500 text-sm">CELO</span>
+                            <span className="text-gray-500 text-sm">ETH</span>
                         </div>
                     </div>
                     {parseFloat(amount) > 0 && nextStageConfig && (
                         <div className="mt-2 text-sm">
                             <p className="text-gray-600">
-                                Total after deposit: {(currentCollateralCelo + parseFloat(amount)).toFixed(2)} CELO
+                                Total after deposit: {(currentCollateralCelo + parseFloat(amount)).toFixed(2)} ETH
                             </p>
                             {(currentCollateralCelo + parseFloat(amount)) < requiredStake && (
                                 <p className="text-red-600">
-                                    Still need {(requiredStake - currentCollateralCelo - parseFloat(amount)).toFixed(2)} more CELO for Stage {nextStage}
+                                    Still need {(requiredStake - currentCollateralCelo - parseFloat(amount)).toFixed(2)} more ETH for Stage {nextStage}
                                 </p>
                             )}
                         </div>
@@ -221,7 +221,7 @@ export function StageUnlockForm({ vault, onSuccess }: StageUnlockFormProps) {
                         className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50"
                         disabled={isLoading || remainingAmount <= 0}
                     >
-                        Exact Amount ({remainingAmount.toFixed(2)} CELO)
+                        Exact Amount ({remainingAmount.toFixed(2)} ETH)
                     </button>
                     <button
                         type="button"
@@ -229,7 +229,7 @@ export function StageUnlockForm({ vault, onSuccess }: StageUnlockFormProps) {
                         className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50"
                         disabled={isLoading}
                     >
-                        +50 CELO
+                        +50 ETH
                     </button>
                     <button
                         type="button"
@@ -237,7 +237,7 @@ export function StageUnlockForm({ vault, onSuccess }: StageUnlockFormProps) {
                         className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50"
                         disabled={isLoading}
                     >
-                        +0.01 CELO
+                        +0.01 ETH
                     </button>
                 </div>
 
@@ -294,7 +294,7 @@ export function StageUnlockForm({ vault, onSuccess }: StageUnlockFormProps) {
                             {isPending ? 'Confirming...' : isConfirming ? 'Processing...' : 'Unlocking Stage...'}
                         </div>
                     ) : (
-                        `Unlock Stage ${nextStage} with ${amount} CELO`
+                        `Unlock Stage ${nextStage} with ${amount} ETH`
                     )}
                 </button>
             </form>

@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Aura.Farm — Tokenize Creator Influence",
-  description: "Creator tokens backed by real CELO collateral and priced by live Farcaster engagement. Not speculation — verifiable onchain value.",
+  description: "Creator tokens backed by real BASE collateral and priced by live Farcaster engagement. Not speculation — verifiable onchain value.",
 };
 
 export default function RootLayout({

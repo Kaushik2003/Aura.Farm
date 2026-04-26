@@ -154,7 +154,7 @@ export function VaultAnalytics({ vault }: VaultAnalyticsProps) {
                             </div>
                             <div>
                                 <div className="text-gray-600">Token Price</div>
-                                <div className="font-semibold">{pegInCelo.toFixed(3)} CELO</div>
+                                <div className="font-semibold">{pegInCelo.toFixed(3)} ETH</div>
                             </div>
                             <div>
                                 <div className="text-gray-600">Supply Cap</div>
@@ -181,7 +181,7 @@ export function VaultAnalytics({ vault }: VaultAnalyticsProps) {
                                     <div className={`${scenario.color === 'green' ? 'text-green-600' : 'text-red-600'}`}>
                                         Token Price
                                     </div>
-                                    <div className="font-semibold">{scenario.peg.toFixed(3)} CELO</div>
+                                    <div className="font-semibold">{scenario.peg.toFixed(3)} ETH</div>
                                     <div className="text-xs opacity-75">
                                         {scenario.peg > pegInCelo ? '+' : ''}{(scenario.peg - pegInCelo).toFixed(3)}
                                     </div>

@@ -1,8 +1,7 @@
 import { z } from 'zod'
 
-// Environment validation schema
 const envSchema = z.object({
-  NEXT_PUBLIC_NETWORK: z.enum(['anvil', 'sepolia']),
+  NEXT_PUBLIC_NETWORK: z.enum(['anvil', 'base-sepolia', 'base']),
   NEXT_PUBLIC_RPC_URL: z.string().url(),
   NEXT_PUBLIC_VAULT_FACTORY_ADDRESS: z.string().regex(/^0x[a-fA-F0-9]{40}$/),
   NEXT_PUBLIC_AURA_ORACLE_ADDRESS: z.string().regex(/^0x[a-fA-F0-9]{40}$/),
@@ -11,9 +10,8 @@ const envSchema = z.object({
   NEXT_PUBLIC_CHAIN_NAME: z.string(),
 })
 
-// Network configuration type
 export type NetworkConfig = {
-  network: 'anvil' | 'sepolia'
+  network: 'anvil' | 'base-sepolia' | 'base'
   chainId: number
   chainName: string
   rpcUrl: string
@@ -24,7 +22,6 @@ export type NetworkConfig = {
   }
 }
 
-// Validate and parse environment variables
 function validateEnv() {
   try {
     return envSchema.parse({
@@ -45,18 +42,17 @@ function validateEnv() {
   }
 }
 
-// Get validated configuration
 export function getConfig(): NetworkConfig {
   const env = validateEnv()
-  
-  // Check for placeholder addresses
-  const placeholderAddress = '0x0000000000000000000000000000000000000000'
+
+  const zeroAddress = '0x0000000000000000000000000000000000000000'
   if (
-    env.NEXT_PUBLIC_VAULT_FACTORY_ADDRESS === placeholderAddress ||
-    env.NEXT_PUBLIC_AURA_ORACLE_ADDRESS === placeholderAddress ||
-    env.NEXT_PUBLIC_TREASURY_ADDRESS === placeholderAddress
+    env.NEXT_PUBLIC_VAULT_FACTORY_ADDRESS === zeroAddress ||
+    env.NEXT_PUBLIC_AURA_ORACLE_ADDRESS === zeroAddress ||
+    env.NEXT_PUBLIC_TREASURY_ADDRESS === zeroAddress
   ) {
-    throw new Error(`Contract addresses not configured for ${env.NEXT_PUBLIC_NETWORK} network`)
+    // Warn in development; contracts haven't been deployed yet
+    console.warn(`[Aura.Farm] Contract addresses not yet set for ${env.NEXT_PUBLIC_NETWORK}. Deploy contracts first.`)
   }
 
   return {
@@ -72,13 +68,10 @@ export function getConfig(): NetworkConfig {
   }
 }
 
-// Helper function to get contract address by name
 export function getContractAddress(contractName: keyof NetworkConfig['contracts']): `0x${string}` {
-  const config = getConfig()
-  return config.contracts[contractName]
+  return getConfig().contracts[contractName]
 }
 
-// Network-specific configurations
 export const NETWORK_CONFIGS = {
   anvil: {
     chainId: 31337,
@@ -87,26 +80,31 @@ export const NETWORK_CONFIGS = {
       default: { http: ['http://localhost:8545'] },
       public: { http: ['http://localhost:8545'] },
     },
-    nativeCurrency: {
-      name: 'Ether',
-      symbol: 'ETH',
-      decimals: 18,
-    },
+    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
   },
-  sepolia: {
-    chainId: 11155111,
-    name: 'Sepolia',
+  'base-sepolia': {
+    chainId: 84532,
+    name: 'Base Sepolia',
     rpcUrls: {
-      default: { http: ['https://sepolia.infura.io/v3'] },
-      public: { http: ['https://sepolia.infura.io/v3'] },
+      default: { http: ['https://sepolia.base.org'] },
+      public: { http: ['https://sepolia.base.org'] },
     },
-    nativeCurrency: {
-      name: 'Sepolia Ether',
-      symbol: 'SEP',
-      decimals: 18,
-    },
+    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
     blockExplorers: {
-      default: { name: 'Etherscan', url: 'https://sepolia.etherscan.io' },
+      default: { name: 'BaseScan', url: 'https://sepolia.basescan.org' },
+    },
+    testnet: true,
+  },
+  base: {
+    chainId: 8453,
+    name: 'Base',
+    rpcUrls: {
+      default: { http: ['https://mainnet.base.org'] },
+      public: { http: ['https://mainnet.base.org'] },
+    },
+    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+    blockExplorers: {
+      default: { name: 'BaseScan', url: 'https://basescan.org' },
     },
   },
 } as const

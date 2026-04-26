@@ -212,7 +212,7 @@ export function showMintSuccess(amount: string, tokenSymbol: string) {
  */
 export function showRedeemSuccess(amount: string, tokenSymbol: string, celoReceived: string) {
   return showSuccessToast('Tokens Redeemed', 
-    `Redeemed ${amount} ${tokenSymbol} for ${celoReceived} CELO`
+    `Redeemed ${amount} ${tokenSymbol} for ${celoReceived} ETH`
   )
 }
 
@@ -239,7 +239,7 @@ export function showBootstrapSuccess() {
  */
 export function showLiquidationSuccess(bounty: string) {
   return showSuccessToast('Liquidation Successful', 
-    `Earned ${bounty} CELO bounty`
+    `Earned ${bounty} ETH bounty`
   )
 }
 

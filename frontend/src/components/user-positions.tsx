@@ -78,7 +78,7 @@ export function UserPositions({ vaultAddress, userAddress }: UserPositionsProps)
                 <div className="bg-green-50 rounded-lg p-4">
                     <div className="text-sm text-green-600 font-medium">Total Collateral</div>
                     <div className="text-xl font-bold text-green-900">
-                        {formatNumber(Number(formatEther(totalCollateral)))} CELO
+                        {formatNumber(Number(formatEther(totalCollateral)))} ETH
                     </div>
                 </div>
             </div>
@@ -128,7 +128,7 @@ export function UserPositions({ vaultAddress, userAddress }: UserPositionsProps)
                                     {formatNumber(Number(formatEther(position.qty)))}
                                 </td>
                                 <td className="py-3 px-2 font-semibold">
-                                    {formatNumber(Number(formatEther(position.collateral)))} CELO
+                                    {formatNumber(Number(formatEther(position.collateral)))} ETH
                                 </td>
                                 <td className="py-3 px-2">
                                     <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">
@@ -179,7 +179,7 @@ export function UserPositions({ vaultAddress, userAddress }: UserPositionsProps)
                             </div>
                             <div>
                                 <div className="text-gray-600 mb-1">Collateral</div>
-                                <div className="font-semibold">{formatNumber(Number(formatEther(position.collateral)))} CELO</div>
+                                <div className="font-semibold">{formatNumber(Number(formatEther(position.collateral)))} ETH</div>
                             </div>
                         </div>
 

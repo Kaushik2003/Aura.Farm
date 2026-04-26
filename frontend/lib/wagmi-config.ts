@@ -1,7 +1,7 @@
 import { http, createConfig } from 'wagmi'
 import { injected } from 'wagmi/connectors'
 import { getDefaultConfig } from '@rainbow-me/rainbowkit'
-import { celo } from 'wagmi/chains'
+import { baseSepolia, base } from 'wagmi/chains'
 import { getConfig } from './config'
 
 const config = getConfig()
@@ -16,26 +16,9 @@ const anvilChain = {
   },
 } as const
 
-const celoSepoliaChain = {
-  id: 11142220,
-  name: 'Celo Sepolia',
-  nativeCurrency: { decimals: 18, name: 'Celo', symbol: 'CELO' },
-  rpcUrls: {
-    default: { http: ['https://rpc.ankr.com/celo_sepolia'] },
-    public: { http: ['https://rpc.ankr.com/celo_sepolia'] },
-  },
-  blockExplorers: {
-    default: { name: 'CeloScan', url: 'https://sepolia.celoscan.io' },
-  },
-  testnet: true,
-} as const
-
-// For Anvil local dev: use plain createConfig with only the injected connector.
-// This avoids WalletConnect initialization entirely — no Reown API calls, no 403.
-// For production networks: use getDefaultConfig which wires up WalletConnect properly.
-// A real WalletConnect project ID is required; get one free at cloud.walletconnect.com.
 function buildConfig() {
   if (config.network === 'anvil') {
+    // Local dev: skip WalletConnect entirely — no Reown API calls
     return createConfig({
       chains: [anvilChain],
       connectors: [injected()],
@@ -46,22 +29,27 @@ function buildConfig() {
   const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID
   if (!projectId) {
     throw new Error(
-      'NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID is required for non-Anvil networks.\n' +
+      'NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID is required for Base networks.\n' +
       'Get a free project ID at https://cloud.walletconnect.com and add it to .env.local.'
     )
   }
 
+  const chain = config.network === 'base' ? base : baseSepolia
+
   return getDefaultConfig({
-    appName: 'Aura.farm',
+    appName: 'Aura.Farm',
     projectId,
-    chains: [celo, celoSepoliaChain] as any,
-    transports: { [config.chainId]: http(config.rpcUrl) },
+    chains: [chain] as any,
+    transports: { [chain.id]: http(config.rpcUrl) },
   })
 }
 
 export const wagmiConfig = buildConfig()
 
-export const currentChain = config.network === 'anvil' ? anvilChain : celo
+export const currentChain =
+  config.network === 'anvil' ? anvilChain :
+  config.network === 'base'  ? base :
+  baseSepolia
 
 export function isCorrectNetwork(chainId?: number): boolean {
   return chainId === config.chainId

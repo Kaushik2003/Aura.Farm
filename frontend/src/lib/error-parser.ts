@@ -5,8 +5,8 @@
 // Contract error mappings for user-friendly messages
 const CONTRACT_ERROR_MESSAGES: Record<string, string> = {
   // CreatorVault errors
-  'InsufficientCollateral': 'Not enough CELO. Please add more collateral.',
-  'StageNotUnlocked': 'Vault not bootstrapped. Creator must deposit 100 CELO first.',
+  'InsufficientCollateral': 'Not enough ETH. Please add more collateral.',
+  'StageNotUnlocked': 'Vault not bootstrapped. Creator must deposit ETH first.',
   'ExceedsStageCap': 'Stage capacity reached. Wait for creator to unlock next stage.',
   'ExceedsSupplyCap': 'Supply cap reached due to low aura. Wait for aura to increase.',
   'HealthTooLow': 'This action would drop vault health below 150%. Reduce quantity or add more collateral.',
@@ -350,7 +350,7 @@ export function parseContractErrorWithContext(
     suggestedAction = 'Please try the transaction again and approve it in your wallet.'
   } else if (isInsufficientFunds(error)) {
     isRetryable = false
-    suggestedAction = 'Please add more CELO to your wallet or reduce the transaction amount.'
+    suggestedAction = 'Please add more ETH to your wallet or reduce the transaction amount.'
   } else if (isWrongNetworkError(error)) {
     isRetryable = false
     suggestedAction = 'Please switch to the correct network in your wallet.'

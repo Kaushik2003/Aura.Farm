@@ -28,7 +28,7 @@ export function CreatorVaultMetrics({ vault }: CreatorVaultMetricsProps) {
     }
 
     // Stage requirements and progress
-    const stageRequirements = [0, 0.001, 0.003, 0.008, 0.018] // CELO requirements for each stage
+    const stageRequirements = [0, 0.001, 0.003, 0.008, 0.018] // ETH requirements for each stage
     const currentStageReq = stageRequirements[vault.stage] || 0
     const nextStageReq = vault.stage < 4 ? stageRequirements[vault.stage + 1] : null
 
@@ -70,7 +70,7 @@ export function CreatorVaultMetrics({ vault }: CreatorVaultMetricsProps) {
                     <div className="text-2xl font-bold text-gray-900">
                         {formatNumber(tvl, 1)}
                     </div>
-                    <div className="text-xs text-gray-500 mt-1">CELO</div>
+                    <div className="text-xs text-gray-500 mt-1">ETH</div>
                 </div>
 
                 {/* Aura Score */}
@@ -91,7 +91,7 @@ export function CreatorVaultMetrics({ vault }: CreatorVaultMetricsProps) {
                 <div className="mb-4">
                     <div className="flex justify-between text-sm text-gray-600 mb-2">
                         <span>Collateral Distribution</span>
-                        <span>{formatEther(vault.totalCollateral)} CELO Total</span>
+                        <span>{formatEther(vault.totalCollateral)} ETH Total</span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-4 flex overflow-hidden">
                         <div
@@ -123,7 +123,7 @@ export function CreatorVaultMetrics({ vault }: CreatorVaultMetricsProps) {
                         <div className="space-y-2">
                             <div className="flex justify-between">
                                 <span className="text-sm text-purple-700">Amount:</span>
-                                <span className="font-semibold text-purple-900">{formatNumber(creatorCollateralCelo, 2)} CELO</span>
+                                <span className="font-semibold text-purple-900">{formatNumber(creatorCollateralCelo, 2)} ETH</span>
                             </div>
                             <div className="flex justify-between">
                                 <span className="text-sm text-purple-700">Percentage:</span>
@@ -144,7 +144,7 @@ export function CreatorVaultMetrics({ vault }: CreatorVaultMetricsProps) {
                         <div className="space-y-2">
                             <div className="flex justify-between">
                                 <span className="text-sm text-blue-700">Amount:</span>
-                                <span className="font-semibold text-blue-900">{formatNumber(fanCollateralCelo, 2)} CELO</span>
+                                <span className="font-semibold text-blue-900">{formatNumber(fanCollateralCelo, 2)} ETH</span>
                             </div>
                             <div className="flex justify-between">
                                 <span className="text-sm text-blue-700">Percentage:</span>
@@ -175,7 +175,7 @@ export function CreatorVaultMetrics({ vault }: CreatorVaultMetricsProps) {
                         </div>
                         <div className="flex justify-between items-center">
                             <span className="text-gray-600">Current Price:</span>
-                            <span className="font-semibold">{pegInCelo.toFixed(4)} CELO</span>
+                            <span className="font-semibold">{pegInCelo.toFixed(4)} ETH</span>
                         </div>
                         <div className="flex justify-between items-center">
                             <span className="text-gray-600">Total Supply:</span>
@@ -204,7 +204,7 @@ export function CreatorVaultMetrics({ vault }: CreatorVaultMetricsProps) {
                         {vault.stage > 0 && (
                             <div className="flex justify-between items-center">
                                 <span className="text-gray-600">Stage Requirement:</span>
-                                <span className="font-semibold">{currentStageReq} CELO</span>
+                                <span className="font-semibold">{currentStageReq} ETH</span>
                             </div>
                         )}
 
@@ -212,7 +212,7 @@ export function CreatorVaultMetrics({ vault }: CreatorVaultMetricsProps) {
                             <>
                                 <div className="flex justify-between items-center">
                                     <span className="text-gray-600">Next Stage Requirement:</span>
-                                    <span className="font-semibold">{nextStageReq} CELO</span>
+                                    <span className="font-semibold">{nextStageReq} ETH</span>
                                 </div>
                                 <div className="flex justify-between items-center">
                                     <span className="text-gray-600">Progress:</span>
@@ -233,7 +233,7 @@ export function CreatorVaultMetrics({ vault }: CreatorVaultMetricsProps) {
                                     </div>
                                     <div className="text-xs text-gray-500 mt-1">
                                         {nextStageReq - creatorCollateralCelo > 0
-                                            ? `${(nextStageReq - creatorCollateralCelo).toFixed(2)} CELO needed for Stage ${vault.stage + 1}`
+                                            ? `${(nextStageReq - creatorCollateralCelo).toFixed(2)} ETH needed for Stage ${vault.stage + 1}`
                                             : `Ready to unlock Stage ${vault.stage + 1}!`
                                         }
                                     </div>

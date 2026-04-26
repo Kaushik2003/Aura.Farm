@@ -319,7 +319,7 @@ export function RedeemForm({ vault, userAddress, onSuccess }: RedeemFormProps) {
                             <div className="flex justify-between">
                                 <span className="text-gray-600">Estimated Return:</span>
                                 <span className="font-medium">
-                                    {formatEther(redemptionCalculation.estimatedReturn)} CELO
+                                    {formatEther(redemptionCalculation.estimatedReturn)} ETH
                                 </span>
                             </div>
 

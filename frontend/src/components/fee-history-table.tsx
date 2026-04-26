@@ -38,7 +38,7 @@ export function FeeHistoryTable({ events, isLoading }: FeeHistoryTableProps) {
 
     const formatCelo = (amount: bigint) => {
         const formatted = formatEther(amount)
-        return `${parseFloat(formatted).toFixed(4)} CELO`
+        return `${parseFloat(formatted).toFixed(4)} ETH`
     }
 
     const formatDate = (timestamp: bigint) => {
@@ -141,7 +141,7 @@ export function FeeHistoryTable({ events, isLoading }: FeeHistoryTableProps) {
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap">
                                         <a
-                                            href={`https://celoscan.io/tx/${event.transactionHash}`}
+                                            href={`https://sepolia.basescan.org/tx/${event.transactionHash}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="text-blue-600 hover:text-blue-800 text-sm font-mono"

@@ -94,7 +94,7 @@ export function LiquidationCard({ vault }: LiquidationCardProps) {
 
     // Watch for transaction success
     if (hash && !isPending && !isConfirming) {
-        showLiquidationSuccess(`${formatEther(calculation?.bounty || 0n)} CELO`)
+        showLiquidationSuccess(`${formatEther(calculation?.bounty || 0n)} ETH`)
     }
 
     return (
@@ -122,11 +122,11 @@ export function LiquidationCard({ vault }: LiquidationCardProps) {
                 </div>
                 <div>
                     <p className="text-xs text-gray-600 mb-1">TVL</p>
-                    <p className="font-semibold">{formatNumber(tvlInCelo)} CELO</p>
+                    <p className="font-semibold">{formatNumber(tvlInCelo)} ETH</p>
                 </div>
                 <div>
                     <p className="text-xs text-gray-600 mb-1">Token Price</p>
-                    <p className="font-semibold">{pegInCelo.toFixed(4)} CELO</p>
+                    <p className="font-semibold">{pegInCelo.toFixed(4)} ETH</p>
                 </div>
                 <div>
                     <p className="text-xs text-gray-600 mb-1">Total Supply</p>
@@ -138,7 +138,7 @@ export function LiquidationCard({ vault }: LiquidationCardProps) {
             <div className="space-y-4">
                 <div>
                     <label htmlFor={`payment-${vault.address}`} className="block text-sm font-medium text-gray-700 mb-2">
-                        CELO Payment Amount
+                        ETH Payment Amount
                     </label>
                     <div className="relative">
                         <input
@@ -153,11 +153,11 @@ export function LiquidationCard({ vault }: LiquidationCardProps) {
                             disabled={isPending || isConfirming}
                         />
                         <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                            <span className="text-gray-500 text-sm">CELO</span>
+                            <span className="text-gray-500 text-sm">ETH</span>
                         </div>
                     </div>
                     <p className="text-xs text-gray-500 mt-1">
-                        Minimum: 0.01 CELO
+                        Minimum: 0.01 ETH
                     </p>
                 </div>
 
@@ -173,11 +173,11 @@ export function LiquidationCard({ vault }: LiquidationCardProps) {
                             </div>
                             <div>
                                 <p className="text-blue-600">Your Bounty:</p>
-                                <p className="font-semibold text-green-600">+{formatEther(calculation.bounty)} CELO</p>
+                                <p className="font-semibold text-green-600">+{formatEther(calculation.bounty)} ETH</p>
                             </div>
                             <div>
                                 <p className="text-blue-600">Creator Penalty:</p>
-                                <p className="font-semibold text-red-600">-{formatEther(calculation.creatorPenalty)} CELO</p>
+                                <p className="font-semibold text-red-600">-{formatEther(calculation.creatorPenalty)} ETH</p>
                             </div>
                             <div>
                                 <p className="text-blue-600">Health After:</p>
@@ -193,7 +193,7 @@ export function LiquidationCard({ vault }: LiquidationCardProps) {
                         {!calculation.isValid && (
                             <div className="text-red-600 text-sm">
                                 {calculation.paymentAmount < parseEther('0.01')
-                                    ? 'Payment amount too small (minimum 0.01 CELO)'
+                                    ? 'Payment amount too small (minimum 0.01 ETH)'
                                     : 'Insufficient payment to restore health to 150%'
                                 }
                             </div>
@@ -224,7 +224,7 @@ export function LiquidationCard({ vault }: LiquidationCardProps) {
                     ) : !calculation.isValid ? (
                         'Invalid Payment Amount'
                     ) : (
-                        `Liquidate Vault (Earn ${formatEther(calculation.bounty)} CELO)`
+                        `Liquidate Vault (Earn ${formatEther(calculation.bounty)} ETH)`
                     )}
                 </button>
             </div>
@@ -233,7 +233,7 @@ export function LiquidationCard({ vault }: LiquidationCardProps) {
             <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded text-xs text-yellow-800">
                 <p className="font-semibold mb-1">⚠️ Liquidation Risk</p>
                 <p>
-                    Ensure you understand the liquidation mechanics. You will inject CELO to restore vault health
+                    Ensure you understand the liquidation mechanics. You will inject ETH to restore vault health
                     and earn a 1% bounty. The creator will be penalized. This action cannot be undone.
                 </p>
             </div>

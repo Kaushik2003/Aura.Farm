@@ -31,7 +31,7 @@ export function CreatorStats({ stats }: CreatorStatsProps) {
         },
         {
             title: 'Total TVL',
-            value: `${parseFloat(formatEther(stats.totalTVL)).toFixed(2)} CELO`,
+            value: `${parseFloat(formatEther(stats.totalTVL)).toFixed(2)} ETH`,
             subtitle: `${parseFloat(formatEther(stats.totalCreatorCollateral)).toFixed(2)} yours`,
             icon: (
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -33,7 +33,7 @@ export function TreasuryStats({ stats }: TreasuryStatsProps) {
 
     const formatCelo = (amount: bigint) => {
         const formatted = formatEther(amount)
-        return `${parseFloat(formatted).toFixed(4)} CELO`
+        return `${parseFloat(formatted).toFixed(4)} ETH`
     }
 
     const formatDate = (timestamp?: bigint) => {

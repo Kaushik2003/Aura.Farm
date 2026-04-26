@@ -145,7 +145,7 @@ export function AuraChart({ vaultAddress, currentAura }: AuraChartProps) {
                 <div className="text-center p-3 bg-blue-50 rounded-lg">
                     <div className="text-sm text-blue-600 font-medium">Token Price Impact</div>
                     <div className="text-lg font-bold text-blue-900">
-                        {(0.3 + (2.7 * currentAura / 200)).toFixed(3)} CELO
+                        {(0.3 + (2.7 * currentAura / 200)).toFixed(3)} ETH
                     </div>
                     <div className="text-xs text-blue-600">Current peg</div>
                 </div>
@@ -166,7 +166,7 @@ export function AuraChart({ vaultAddress, currentAura }: AuraChartProps) {
                     Aura reflects creator engagement and determines token economics:
                 </p>
                 <ul className="text-sm text-gray-600 space-y-1">
-                    <li>• <strong>Token Price:</strong> Higher aura = higher token price (0.3 - 3.0 CELO)</li>
+                    <li>• <strong>Token Price:</strong> Higher aura = higher token price (0.3 - 3.0 ETH)</li>
                     <li>• <strong>Supply Cap:</strong> Higher aura = larger supply capacity</li>
                     <li>• <strong>Updates:</strong> Aura is updated periodically based on creator activity</li>
                 </ul>

@@ -108,7 +108,7 @@ export default function LiquidatePage() {
                 <h3 className="text-lg font-semibold text-blue-800 mb-3">How Liquidation Works</h3>
                 <div className="space-y-2 text-sm text-blue-700">
                     <p>• <strong>Liquidation Threshold:</strong> Vaults become liquidatable when health drops below 120%</p>
-                    <p>• <strong>Your Reward:</strong> Earn 1% bounty on the CELO you inject to restore vault health</p>
+                    <p>• <strong>Your Reward:</strong> Earn 1% bounty on the ETH you inject to restore vault health</p>
                     <p>• <strong>Creator Penalty:</strong> Creator loses 10% of their collateral (capped at 20% of your payment)</p>
                     <p>• <strong>Target Health:</strong> Liquidation must restore vault health to at least 150%</p>
                     <p>• <strong>Token Removal:</strong> Excess tokens are burned to restore proper collateralization</p>

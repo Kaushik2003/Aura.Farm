@@ -36,7 +36,7 @@ export function BootstrapForm({ vault, onSuccess }: BootstrapFormProps) {
 
         const amountNum = parseFloat(amount)
         if (amountNum < 0.001) {
-            toast.error('Minimum 0.001 CELO required to unlock Stage 1')
+            toast.error('Minimum 0.001 ETH required to unlock Stage 1')
             return
         }
 
@@ -63,7 +63,7 @@ export function BootstrapForm({ vault, onSuccess }: BootstrapFormProps) {
             <div className="mb-4">
                 <h3 className="text-lg font-semibold text-purple-900">Bootstrap Vault</h3>
                 <p className="text-sm text-gray-600 mt-1">
-                    Deposit CELO to unlock Stage 1 and enable fan minting
+                    Deposit ETH to unlock Stage 1 and enable fan minting
                 </p>
             </div>
 
@@ -73,7 +73,7 @@ export function BootstrapForm({ vault, onSuccess }: BootstrapFormProps) {
                 <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                         <span className="text-purple-700">Minimum Deposit:</span>
-                        <span className="font-semibold text-purple-900">0.001 CELO</span>
+                        <span className="font-semibold text-purple-900">0.001 ETH</span>
                     </div>
                     <div className="flex justify-between">
                         <span className="text-purple-700">Unlocks:</span>
@@ -89,7 +89,7 @@ export function BootstrapForm({ vault, onSuccess }: BootstrapFormProps) {
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                     <label htmlFor="amount" className="block text-sm font-medium text-gray-700 mb-2">
-                        CELO Amount
+                        ETH Amount
                     </label>
                     <div className="relative">
                         <input
@@ -104,12 +104,12 @@ export function BootstrapForm({ vault, onSuccess }: BootstrapFormProps) {
                             disabled={isLoading}
                         />
                         <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                            <span className="text-gray-500 text-sm">CELO</span>
+                            <span className="text-gray-500 text-sm">ETH</span>
                         </div>
                     </div>
                     {parseFloat(amount) < 0.001 && amount && (
                         <p className="text-red-600 text-sm mt-1">
-                            Minimum 0.001 CELO required
+                            Minimum 0.001 ETH required
                         </p>
                     )}
                 </div>
@@ -122,7 +122,7 @@ export function BootstrapForm({ vault, onSuccess }: BootstrapFormProps) {
                         className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50"
                         disabled={isLoading}
                     >
-                        0.001 CELO
+                        0.001 ETH
                     </button>
                     <button
                         type="button"
@@ -130,7 +130,7 @@ export function BootstrapForm({ vault, onSuccess }: BootstrapFormProps) {
                         className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50"
                         disabled={isLoading}
                     >
-                        0.01 CELO
+                        0.01 ETH
                     </button>
                     <button
                         type="button"
@@ -138,7 +138,7 @@ export function BootstrapForm({ vault, onSuccess }: BootstrapFormProps) {
                         className="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50"
                         disabled={isLoading}
                     >
-                        0.1 CELO
+                        0.1 ETH
                     </button>
                 </div>
 
@@ -172,7 +172,7 @@ export function BootstrapForm({ vault, onSuccess }: BootstrapFormProps) {
                             </svg>
                             <span className="text-sm text-red-700">
                                 {error.message?.includes('InsufficientCollateral')
-                                    ? 'Insufficient CELO balance'
+                                    ? 'Insufficient ETH balance'
                                     : 'Transaction failed. Please try again.'
                                 }
                             </span>
@@ -191,7 +191,7 @@ export function BootstrapForm({ vault, onSuccess }: BootstrapFormProps) {
                             {isPending ? 'Confirming...' : isConfirming ? 'Processing...' : 'Bootstrapping...'}
                         </div>
                     ) : (
-                        `Bootstrap with ${amount} CELO`
+                        `Bootstrap with ${amount} ETH`
                     )}
                 </button>
             </form>

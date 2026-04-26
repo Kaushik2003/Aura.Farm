@@ -77,12 +77,12 @@ export function FanVaultCard({ vault }: FanVaultCardProps) {
 
                     <div className="flex justify-between items-center">
                         <span className="text-gray-600 text-sm">Token Price:</span>
-                        <span className="font-semibold">{pegInCelo.toFixed(4)} CELO</span>
+                        <span className="font-semibold">{pegInCelo.toFixed(4)} ETH</span>
                     </div>
 
                     <div className="flex justify-between items-center">
                         <span className="text-gray-600 text-sm">TVL:</span>
-                        <span className="font-semibold">{formatNumber(tvlInCelo)} CELO</span>
+                        <span className="font-semibold">{formatNumber(tvlInCelo)} ETH</span>
                     </div>
 
                     <div className="flex justify-between items-center">

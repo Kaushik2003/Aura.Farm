@@ -16,7 +16,7 @@ export function CreatorVaultCard({ vault }: CreatorVaultCardProps) {
 
     const healthPercentage = (Number(vault.health) / 1e18 * 100).toFixed(0)
 
-    // Stage requirements in CELO
+    // Stage requirements in ETH
     const stageRequirements = [0, 100, 500, 2500, 10000]
     const nextStage = vault.stage < 4 ? vault.stage + 1 : null
     const nextStageRequired = nextStage ? stageRequirements[nextStage] : null
@@ -57,11 +57,11 @@ export function CreatorVaultCard({ vault }: CreatorVaultCardProps) {
                     </div>
                     <div className="flex justify-between">
                         <span className="text-gray-600">Your Collateral:</span>
-                        <span className="font-semibold">{parseFloat(formatEther(vault.creatorCollateral)).toFixed(2)} CELO</span>
+                        <span className="font-semibold">{parseFloat(formatEther(vault.creatorCollateral)).toFixed(2)} ETH</span>
                     </div>
                     <div className="flex justify-between">
                         <span className="text-gray-600">Fan Collateral:</span>
-                        <span className="font-semibold">{parseFloat(formatEther(vault.fanCollateral)).toFixed(2)} CELO</span>
+                        <span className="font-semibold">{parseFloat(formatEther(vault.fanCollateral)).toFixed(2)} ETH</span>
                     </div>
                     <div className="flex justify-between">
                         <span className="text-gray-600">Total Supply:</span>
@@ -69,7 +69,7 @@ export function CreatorVaultCard({ vault }: CreatorVaultCardProps) {
                     </div>
                     <div className="flex justify-between">
                         <span className="text-gray-600">Token Price:</span>
-                        <span className="font-semibold">{parseFloat(formatEther(vault.peg)).toFixed(4)} CELO</span>
+                        <span className="font-semibold">{parseFloat(formatEther(vault.peg)).toFixed(4)} ETH</span>
                     </div>
                 </div>
 
@@ -78,7 +78,7 @@ export function CreatorVaultCard({ vault }: CreatorVaultCardProps) {
                     <div className="border-t pt-3">
                         <div className="bg-yellow-50 border border-yellow-200 rounded p-3">
                             <p className="text-sm text-yellow-800 font-medium">⚠️ Bootstrap Required</p>
-                            <p className="text-xs text-yellow-700 mt-1">Deposit 0.001 CELO to activate vault</p>
+                            <p className="text-xs text-yellow-700 mt-1">Deposit 0.001 ETH to activate vault</p>
                         </div>
                     </div>
                 ) : vault.stage === 4 ? (
@@ -88,7 +88,7 @@ export function CreatorVaultCard({ vault }: CreatorVaultCardProps) {
                 ) : nextStage && nextStageRequired ? (
                     <div className="border-t pt-3">
                         <div className="flex justify-between text-xs text-gray-600 mb-2">
-                            <span>Next Stage: {nextStageRequired} CELO</span>
+                            <span>Next Stage: {nextStageRequired} ETH</span>
                             <span>{((currentCollateralCelo / nextStageRequired) * 100).toFixed(0)}%</span>
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-2">
@@ -101,7 +101,7 @@ export function CreatorVaultCard({ vault }: CreatorVaultCardProps) {
                         </div>
                         <p className="text-xs text-gray-600 mt-1">
                             {nextStageRequired - currentCollateralCelo > 0
-                                ? `${(nextStageRequired - currentCollateralCelo).toFixed(2)} CELO needed`
+                                ? `${(nextStageRequired - currentCollateralCelo).toFixed(2)} ETH needed`
                                 : 'Ready to unlock!'
                             }
                         </p>

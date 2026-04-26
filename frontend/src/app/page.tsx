@@ -195,7 +195,7 @@ export default function Home() {
           transition={{ duration: 0.7, delay: 0.45 }}
           className="mt-6 text-base md:text-lg text-white/45 max-w-md leading-relaxed"
         >
-          Creator tokens backed by real CELO collateral and priced by live Farcaster engagement — not speculation.
+          Creator tokens backed by real BASE collateral and priced by live Farcaster engagement — not speculation.
         </motion.p>
 
         {/* CTAs */}
@@ -227,7 +227,7 @@ export default function Home() {
           transition={{ duration: 0.8, delay: 0.9 }}
           className="flex flex-wrap justify-center gap-6 mt-10 text-xs text-white/30"
         >
-          {['Built on Celo', 'Farcaster Native', 'CELO Collateralized', 'Real-Time Aura Oracle'].map((t) => (
+          {['Built on Base', 'Farcaster Native', 'BASE Collateralized', 'Real-Time Aura Oracle'].map((t) => (
             <span key={t} className="flex items-center gap-1.5">
               <span className="w-1 h-1 rounded-full bg-white/20" />
               {t}
@@ -275,12 +275,11 @@ export default function Home() {
       <section className="relative z-10 border-t border-white/[0.06] bg-[#07090c]/80 backdrop-blur-xl py-6 px-6 md:px-12">
         <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-10 md:gap-16">
           {[
-            { name: 'Celo', prefix: '▲' },
+            { name: 'Base', prefix: '◈' },
             { name: 'Farcaster', prefix: '✦' },
             { name: 'IPFS', prefix: '◎' },
             { name: 'Wagmi', prefix: '_' },
             { name: 'Viem', prefix: '⬡' },
-            { name: 'Base', prefix: '◈' },
             { name: 'Chainlink', prefix: '⬟' },
           ].map(({ name, prefix }) => (
             <div key={name} className="flex items-center gap-1.5 text-white/25 hover:text-white/45 transition-colors text-sm font-medium tracking-wide">
@@ -302,7 +301,7 @@ export default function Home() {
           >
             <div className="inline-flex items-center gap-2 border border-white/[0.08] rounded-full px-4 py-1.5 text-xs text-white/50 mb-5 bg-white/[0.03]">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400/70 animate-pulse" />
-              Protocol Live · Celo Mainnet
+              Protocol Live · Base Mainnet
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">Real numbers. No hype.</h2>
             <p className="mt-4 text-white/40 text-base max-w-md mx-auto">
@@ -312,7 +311,7 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
-              { label: 'Total Value Locked', value: '$2.4M', sub: 'CELO in collateral' },
+              { label: 'Total Value Locked', value: '$2.4M', sub: 'BASE in collateral' },
               { label: 'Creator Vaults', value: '128', sub: 'Deployed onchain' },
               { label: 'Active Vaults', value: '94', sub: 'Bootstrapped & minting' },
               { label: 'Collateral Ratio', value: '150%', sub: 'Protocol minimum' },
@@ -361,9 +360,9 @@ export default function Home() {
 
             <div className="space-y-0">
               {[
-                { step: '01', title: 'Creator Deploys a Vault', desc: 'Bootstrap 0.001 CELO stake to unlock Stage 1. The vault generates a dedicated ERC-20 token representing your creator equity.' },
+                { step: '01', title: 'Creator Deploys a Vault', desc: 'Bootstrap 0.001 BASE stake to unlock Stage 1. The vault generates a dedicated ERC-20 token representing your creator equity.' },
                 { step: '02', title: 'Aura Oracle Sets the Price', desc: 'Every 6 hours, Farcaster metrics compute an Aura score (0–200) that anchors token price and supply cap — fully onchain.' },
-                { step: '03', title: 'Fans Mint at 150% Collateral', desc: 'Fans invest by minting creator tokens. Each token is backed by 150% CELO collateral — real value, not speculation.' },
+                { step: '03', title: 'Fans Mint at 150% Collateral', desc: 'Fans invest by minting creator tokens. Each token is backed by 150% BASE collateral — real value, not speculation.' },
                 { step: '04', title: 'Dynamic Pricing Reflects Growth', desc: 'Aura rises → price rises. The protocol auto-adjusts supply and liquidates if health drops below 120%.' },
               ].map(({ step, title, desc }, i) => (
                 <motion.div
@@ -410,7 +409,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {[
-              { title: '150% Real Collateral', desc: 'Every token is over-collateralized with CELO. If the vault goes unhealthy, the protocol auto-liquidates — protecting all stakeholders.' },
+              { title: '150% Real Collateral', desc: 'Every token is over-collateralized with BASE. If the vault goes unhealthy, the protocol auto-liquidates — protecting all stakeholders.' },
               { title: 'Aura-Anchored Pricing', desc: 'Token price is not speculative. It is computed from live Farcaster metrics and pushed onchain every 6 hours.' },
               { title: 'Farcaster-Native Identity', desc: 'Creators link their Farcaster handle. No anonymous rug-pulls, no fake traction. The social graph is real.' },
               { title: 'Verifiable Onchain Trust', desc: 'All oracle computations are stored on IPFS with full audit trails. Every aura update is a transaction. Nothing is hidden.' },
@@ -602,7 +601,7 @@ export default function Home() {
             )}
             <Link href="/admin" className="hover:text-white transition-colors">Admin</Link>
           </div>
-          <div className="text-xs text-white/20">Built on Celo · Powered by Farcaster</div>
+          <div className="text-xs text-white/20">Built on Base · Powered by Farcaster</div>
         </div>
       </footer>
     </div>

@@ -86,7 +86,7 @@ export function MintForm({ vault, onSuccess }: MintFormProps) {
                     mintFee: 0n,
                     totalCost: 0n,
                     isValid: false,
-                    errorMessage: 'Vault not bootstrapped. Creator must deposit 0.001 CELO first.',
+                    errorMessage: 'Vault not bootstrapped. Creator must deposit 0.001 ETH first.',
                 }
             }
 
@@ -127,7 +127,7 @@ export function MintForm({ vault, onSuccess }: MintFormProps) {
                     mintFee,
                     totalCost,
                     isValid: false,
-                    errorMessage: 'Insufficient CELO balance for this mint.',
+                    errorMessage: 'Insufficient ETH balance for this mint.',
                 }
             }
 
@@ -228,28 +228,28 @@ export function MintForm({ vault, onSuccess }: MintFormProps) {
                             <div className="flex justify-between">
                                 <span className="text-gray-600">Required Collateral:</span>
                                 <span className="font-medium">
-                                    {formatEther(mintCalculation.requiredCollateral)} CELO
+                                    {formatEther(mintCalculation.requiredCollateral)} ETH
                                 </span>
                             </div>
 
                             <div className="flex justify-between">
                                 <span className="text-gray-600">Mint Fee (0.5%):</span>
                                 <span className="font-medium">
-                                    {formatEther(mintCalculation.mintFee)} CELO
+                                    {formatEther(mintCalculation.mintFee)} ETH
                                 </span>
                             </div>
 
                             <div className="border-t pt-1 mt-2">
                                 <div className="flex justify-between font-semibold">
                                     <span>Total Cost:</span>
-                                    <span>{formatEther(mintCalculation.totalCost)} CELO</span>
+                                    <span>{formatEther(mintCalculation.totalCost)} ETH</span>
                                 </div>
                             </div>
                         </div>
 
                         {/* Current peg display */}
                         <div className="text-xs text-gray-500 mt-2">
-                            Current price: {formatEther(vault.peg)} CELO per token
+                            Current price: {formatEther(vault.peg)} ETH per token
                         </div>
                     </div>
                 )}
@@ -314,7 +314,7 @@ export function MintForm({ vault, onSuccess }: MintFormProps) {
                 {/* User Balance Display */}
                 {address && celoBalance && (
                     <div className="text-center text-sm text-gray-600">
-                        Your balance: {parseFloat(formatEther(celoBalance.value)).toFixed(4)} CELO
+                        Your balance: {parseFloat(formatEther(celoBalance.value)).toFixed(4)} ETH
                     </div>
                 )}
             </form>

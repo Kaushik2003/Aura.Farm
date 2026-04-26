@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 import { createWalletClient, http, createPublicClient, isAddress } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
-import { sepolia } from 'viem/chains'
+import { baseSepolia, base } from 'viem/chains'
 import { ORACLE_ABI } from '../../../../lib/abis'
 
 // Environment validation schema
@@ -13,7 +13,7 @@ const envSchema = z.object({
   ORACLE_PRIVATE_KEY: z.string().regex(/^0x[a-fA-F0-9]{64}$/),
   NEXT_PUBLIC_RPC_URL: z.string().url(),
   NEXT_PUBLIC_AURA_ORACLE_ADDRESS: z.string().regex(/^0x[a-fA-F0-9]{40}$/),
-  NEXT_PUBLIC_NETWORK: z.enum(['anvil', 'sepolia']),
+  NEXT_PUBLIC_NETWORK: z.enum(['anvil', 'base-sepolia', 'base']),
 })
 
 // Request validation schema
@@ -308,14 +308,16 @@ async function updateVaultAura(vaultAddress: string, aura: number, ipfsUrl: stri
   const env = envSchema.parse(process.env)
   
   // Create chain configuration based on network
-  const chain = env.NEXT_PUBLIC_NETWORK === 'anvil' 
+  const chain = env.NEXT_PUBLIC_NETWORK === 'anvil'
     ? {
         id: 31337,
         name: 'Anvil Local',
         nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
         rpcUrls: { default: { http: [env.NEXT_PUBLIC_RPC_URL] } },
       }
-    : sepolia
+    : env.NEXT_PUBLIC_NETWORK === 'base'
+    ? base
+    : baseSepolia
 
   // Create clients
   const publicClient = createPublicClient({
