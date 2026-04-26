@@ -13,6 +13,9 @@ export function Navigation() {
     const { isCreator } = useCreatorVaults(address)
     const { isAdmin } = useAdminCheck(address)
 
+    // Landing page has its own premium nav
+    if (pathname === '/') return null
+
     return (
         <nav className="border-b border-gray-200 bg-white">
             <div className="container mx-auto px-4">

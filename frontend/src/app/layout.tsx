@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aura.Farm - Creator Token Platform",
-  description: "A decentralized platform for creator tokens backed by dual collateral",
+  title: "Aura.Farm — Tokenize Creator Influence",
+  description: "Creator tokens backed by real CELO collateral and priced by live Farcaster engagement. Not speculation — verifiable onchain value.",
 };
 
 export default function RootLayout({

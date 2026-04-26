@@ -1,49 +1,68 @@
 import { http, createConfig } from 'wagmi'
-import { sepolia } from 'wagmi/chains'
+import { injected } from 'wagmi/connectors'
 import { getDefaultConfig } from '@rainbow-me/rainbowkit'
-import { getConfig, NETWORK_CONFIGS } from './config'
+import { celo } from 'wagmi/chains'
+import { getConfig } from './config'
 
-// Get current network configuration
 const config = getConfig()
 
-// Define Anvil chain configuration
 const anvilChain = {
   id: 31337,
   name: 'Anvil Local',
-  nativeCurrency: {
-    decimals: 18,
-    name: 'Ether',
-    symbol: 'ETH',
-  },
+  nativeCurrency: { decimals: 18, name: 'Ether', symbol: 'ETH' },
   rpcUrls: {
-    default: {
-      http: ['http://localhost:8545'],
-    },
-    public: {
-      http: ['http://localhost:8545'],
-    },
+    default: { http: ['http://localhost:8545'] },
+    public: { http: ['http://localhost:8545'] },
   },
 } as const
 
-// Select chain based on environment
-const chains = config.network === 'anvil' ? [anvilChain] : [sepolia]
-
-// Create wagmi configuration with RainbowKit
-export const wagmiConfig = getDefaultConfig({
-  appName: 'Aura.farm',
-  projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || 'default-project-id',
-  chains: chains as any,
-  transports: {
-    [config.chainId]: http(config.rpcUrl),
+const celoSepoliaChain = {
+  id: 11142220,
+  name: 'Celo Sepolia',
+  nativeCurrency: { decimals: 18, name: 'Celo', symbol: 'CELO' },
+  rpcUrls: {
+    default: { http: ['https://rpc.ankr.com/celo_sepolia'] },
+    public: { http: ['https://rpc.ankr.com/celo_sepolia'] },
   },
-})
+  blockExplorers: {
+    default: { name: 'CeloScan', url: 'https://sepolia.celoscan.io' },
+  },
+  testnet: true,
+} as const
 
-// Export current chain for use in components
-export const currentChain = chains[0]
+// For Anvil local dev: use plain createConfig with only the injected connector.
+// This avoids WalletConnect initialization entirely — no Reown API calls, no 403.
+// For production networks: use getDefaultConfig which wires up WalletConnect properly.
+// A real WalletConnect project ID is required; get one free at cloud.walletconnect.com.
+function buildConfig() {
+  if (config.network === 'anvil') {
+    return createConfig({
+      chains: [anvilChain],
+      connectors: [injected()],
+      transports: { [anvilChain.id]: http(config.rpcUrl) },
+    })
+  }
 
-// Helper to check if user is on correct network
+  const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID
+  if (!projectId) {
+    throw new Error(
+      'NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID is required for non-Anvil networks.\n' +
+      'Get a free project ID at https://cloud.walletconnect.com and add it to .env.local.'
+    )
+  }
+
+  return getDefaultConfig({
+    appName: 'Aura.farm',
+    projectId,
+    chains: [celo, celoSepoliaChain] as any,
+    transports: { [config.chainId]: http(config.rpcUrl) },
+  })
+}
+
+export const wagmiConfig = buildConfig()
+
+export const currentChain = config.network === 'anvil' ? anvilChain : celo
+
 export function isCorrectNetwork(chainId?: number): boolean {
   return chainId === config.chainId
 }
-
-// Hel

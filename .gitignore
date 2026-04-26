@@ -16,3 +16,4 @@ docs/
 # Oracle dependencies
 oracle/node_modules/
 oracle/.env.local
+.claude/
